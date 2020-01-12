@@ -1,3 +1,11 @@
+'''
+
+reads data from usb port and plot them frame is updated every 1
+miliseconds while usb port sends each packets of data (144bits) in 144/9600 seconds
+meaning each seconds sends about 66 packets of data
+
+'''
+
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 from mpl_toolkits.mplot3d import Axes3D
@@ -22,20 +30,7 @@ splitted_line = []
 
 fig = plt.figure()
 ax1 = fig.add_subplot(111, projection='3d')
-'''
-ax1.set_xlim3d(-1000, 1000)
-ax1.set_ylim3d(-1000,1000)
-ax1.set_zlim3d(-1000,1000)'''
-'''
-fig = plt.figure()
-ax1 = fig.add_subplot(19,8,2)
-ax2 = fig.add_subplot(14,8,4)'''
 
-'''
-x = [54 , 65 ,64 , 23 ,33.5 , -76.65]
-y = [3 , 54 ,2 ,2 , -0.532 , -.54 ]
-z = [34 , 54 ,6 , 1 , 4 , -43]
-'''
 x = []
 y = []
 z = []
