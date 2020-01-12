@@ -2,12 +2,15 @@ import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 from mpl_toolkits.mplot3d import Axes3D
 import numpy as np
+from matplotlib import style
+style.use('fivethirtyeight')
+
 
 #!/usr/bin/python
 import os, sys
 import serial
 
-ser = serial.Serial( 'COM3',9600, timeout = 0.5)
+ser = serial.Serial( 'COM3',9600, timeout = 10)
 
 
 x = []
@@ -18,11 +21,11 @@ z = []
 splitted_line = []
 
 fig = plt.figure()
-ax1 = Axes3D(fig)
-
+ax1 = fig.add_subplot(111, projection='3d')
+'''
 ax1.set_xlim3d(-1000, 1000)
 ax1.set_ylim3d(-1000,1000)
-ax1.set_zlim3d(-1000,1000)
+ax1.set_zlim3d(-1000,1000)'''
 '''
 fig = plt.figure()
 ax1 = fig.add_subplot(19,8,2)
@@ -38,9 +41,10 @@ y = []
 z = []
 
 def animate(i):
+    '''
     ax1.set_xlim3d(-1000.00, 1000.00)
     ax1.set_ylim3d(-1000.00, 1000.00)
-    ax1.set_zlim3d(-1000.00, 1000.00)
+    ax1.set_zlim3d(-1000.00, 1000.00)'''
     print (i)
     lines = ser.readline()
     print(lines)
@@ -73,10 +77,11 @@ def animate(i):
     print(x[i])
     print(y[i])
     print(z[i])
-
+    print(i)
     ax1.clear()
-    ax1.plot3D(x , y , z)
+    ax1.plot(x , y , z)
 
 
-ani = animation.FuncAnimation(fig, animate, interval=100 , repeat=True)
+
+ani = animation.FuncAnimation(fig, animate , interval=1 , repeat=True)
 plt.show()
